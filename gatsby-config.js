@@ -13,6 +13,12 @@ module.exports = {
     `gatsby-plugin-postcss`,
     `gatsby-plugin-react-svg`,
     {
+      resolve: `gatsby-source-filesystem`,
+      options: {
+        path: `${__dirname}/src/data`,
+      },
+    },
+    {
       resolve: `gatsby-plugin-manifest`,
       options: {
         name: `gatsby-starter-default`,
