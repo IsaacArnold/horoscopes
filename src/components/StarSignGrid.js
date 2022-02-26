@@ -1,8 +1,8 @@
 import React, { useState } from "react";
 import { GatsbyImage, getImage } from "gatsby-plugin-image";
-import { StaticQuery, graphql } from "gatsby";
+import { StaticQuery, graphql, Link } from "gatsby";
 
-const SingleStarSign = ({ zodiac, cb }) => {
+const SingleStarSign = ({ zodiac }) => {
   const [zodiacName, setZodiacName] = useState(zodiac.name);
   const image = getImage(zodiac.icon);
 
@@ -12,13 +12,15 @@ const SingleStarSign = ({ zodiac, cb }) => {
   };
 
   return (
-    <div
+    <Link
       className="flex justify-start items-center border border-secondary-color rounded-lg py-3 px-6"
       onClick={handleClick}
+      to="/zodiac"
+      state={{ name: zodiacName }}
     >
       <GatsbyImage image={image} alt={zodiac.name} />
       <p className="ml-5">{zodiac.name}</p>
-    </div>
+    </Link>
   );
 };
 
