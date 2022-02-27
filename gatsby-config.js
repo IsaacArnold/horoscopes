@@ -1,3 +1,7 @@
+require("dotenv").config({
+  path: `.env.${process.env.NODE_ENV}`,
+});
+
 module.exports = {
   siteMetadata: {
     title: `Horoscopes`,
@@ -24,6 +28,13 @@ module.exports = {
       options: {
         name: `images`,
         path: `./src/images/icons/png`,
+      },
+    },
+    {
+      resolve: `gatsby-source-filesystem`,
+      options: {
+        name: `zodiacImages`,
+        path: `./src/images/zodiacs/png`,
       },
     },
     {

@@ -13,7 +13,7 @@ const SingleStarSign = ({ zodiac }) => {
   // The state prop in the below Link tag allows me to pass the state 'zodiacName' onto the next page
   return (
     <Link
-      className="flex justify-start items-center border border-secondary-color rounded-lg py-3 px-6"
+      className="flex justify-start items-center border border-secondary-color rounded-lg py-3 px-4"
       onClick={handleClick}
       to="/zodiac"
       state={{ name: zodiacName }}
