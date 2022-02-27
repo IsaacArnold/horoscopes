@@ -41,6 +41,8 @@ const Zodaic = ({ location, data }) => {
 
   console.log(zodiacInfo);
 
+  // TODO: Create a single class for the reusable styles below
+
   return (
     <Layout>
       {zodiacInfo && (
@@ -75,7 +77,7 @@ const Zodaic = ({ location, data }) => {
                 <p className="text-sm">{zodiacInfo.description}</p>
               </div>
               {/* Additional information section */}
-              <div>
+              <div className="grid grid-cols-2 gap-4">
                 <div className="flex items-center">
                   <Heart />
                   <div className="ml-2">
@@ -100,14 +102,14 @@ const Zodaic = ({ location, data }) => {
                 <div className="flex items-center">
                   <Number />
                   <div className="ml-2">
-                    <p className="font-semibold text-sm">NUMBER</p>
+                    <p className="font-semibold text-sm">LUCKY NUMBER</p>
                     <p className="text-sm">{zodiacInfo.lucky_number}</p>
                   </div>
                 </div>
                 <div className="flex items-center">
                   <Time />
                   <div className="ml-2">
-                    <p className="font-semibold text-sm">TIME</p>
+                    <p className="font-semibold text-sm">LUCKY TIME</p>
                     <p className="text-sm">{zodiacInfo.lucky_time}</p>
                   </div>
                 </div>
