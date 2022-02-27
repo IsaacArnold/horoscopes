@@ -3,6 +3,7 @@
     {
       "name": "Aries",
       "icon": "../images/icons/png/aries.png",
+      "mainImage": "../images/zodiacs/aries.svg",
       "id": 1
     },
     {
