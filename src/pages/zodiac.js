@@ -12,14 +12,18 @@ import Time from "../images/icons/svg/compat/time.svg";
 
 import LoadingIcons from "react-loading-icons";
 
-const Zodaic = ({ location, data }) => {
-  const originalName = location.state.name;
-  const zodiac = location.state.name.toLowerCase();
+const Zodiac = ({ location, data }) => {
+  const { state = {} } = location;
+  const { name } = state;
+  const originalName = name;
+  // const zodiac = name.toLowerCase();
+  // const originalName = location.state.name;
+  // const zodiac = location.state.name.toLowerCase();
   const [zodiacInfo, setZodiacInfo] = useState();
 
   async function fetchData() {
     const res = await fetch(
-      `https://sameer-kumar-aztro-v1.p.rapidapi.com/?sign=${zodiac}&day=today`,
+      `https://sameer-kumar-aztro-v1.p.rapidapi.com/?sign=${zodiac.toLowerCase()}&day=today`,
       {
         method: "POST",
         headers: {
@@ -39,14 +43,14 @@ const Zodaic = ({ location, data }) => {
 
   useEffect(() => {
     fetchData();
-  });
+  }, []);
 
   console.log(zodiacInfo);
 
   return (
     <Layout>
       {/* If zodiacInfo is populated render the info, if not, render loading screen */}
-      {!zodiacInfo ? (
+      {!zodiacInfo && !name ? (
         <div className="flex justify-center items-center w-full h-[70vh] m-auto">
           <LoadingIcons.Oval stroke="#DEDDFD" strokeWidth="5" />
         </div>
@@ -127,4 +131,4 @@ const Zodaic = ({ location, data }) => {
   );
 };
 
-export default Zodaic;
+export default Zodiac;
