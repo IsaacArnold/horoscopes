@@ -10,6 +10,8 @@ import Heart from "../images/icons/svg/compat/heart.svg";
 import Number from "../images/icons/svg/compat/number.svg";
 import Time from "../images/icons/svg/compat/time.svg";
 
+import LoadingIcons from "react-loading-icons";
+
 const Zodaic = ({ location, data }) => {
   const originalName = location.state.name;
   const zodiac = location.state.name.toLowerCase();
@@ -37,15 +39,18 @@ const Zodaic = ({ location, data }) => {
 
   useEffect(() => {
     fetchData();
-  }, []);
+  });
 
   console.log(zodiacInfo);
 
-  // TODO: Create a single class for the reusable styles below
-
   return (
     <Layout>
-      {zodiacInfo && (
+      {/* If zodiacInfo is populated render the info, if not, render loading screen */}
+      {!zodiacInfo ? (
+        <div className="flex justify-center items-center w-full h-[70vh] m-auto">
+          <LoadingIcons.Oval stroke="#DEDDFD" strokeWidth="5" />
+        </div>
+      ) : (
         <main className="flex flex-col justify-center w-full">
           <div className="bg-secondary-color text-primary-color rounded-br-[40px]">
             <div className="w-11/12 m-auto py-8">
@@ -71,45 +76,45 @@ const Zodaic = ({ location, data }) => {
             <div>
               {/* Description section */}
               <div className="mb-8">
-                <p className="font-semibold text-sm mb-2">
+                <p className="small-heading-txt mb-2">
                   {moment().format("MMM D")}
                 </p>
                 <p className="text-sm">{zodiacInfo.description}</p>
               </div>
               {/* Additional information section */}
               <div className="grid grid-cols-2 gap-4">
-                <div className="flex items-center">
+                <div className="flex-items-center">
                   <Heart />
                   <div className="ml-2">
-                    <p className="font-semibold text-sm">COMPATIBILITY</p>
+                    <p className="small-heading-txt">COMPATIBILITY</p>
                     <p className="text-sm">{zodiacInfo.compatibility}</p>
                   </div>
                 </div>
-                <div className="flex items-center">
+                <div className="flex-items-center">
                   <Face />
                   <div className="ml-2">
-                    <p className="font-semibold text-sm">MOOD</p>
+                    <p className="small-heading-txt">MOOD</p>
                     <p className="text-sm">{zodiacInfo.mood}</p>
                   </div>
                 </div>
-                <div className="flex items-center">
+                <div className="flex-items-center">
                   <Color />
                   <div className="ml-2">
-                    <p className="font-semibold text-sm">COLOUR</p>
+                    <p className="small-heading-txt">COLOUR</p>
                     <p className="text-sm">{zodiacInfo.color}</p>
                   </div>
                 </div>
-                <div className="flex items-center">
+                <div className="flex-items-center">
                   <Number />
                   <div className="ml-2">
-                    <p className="font-semibold text-sm">LUCKY NUMBER</p>
+                    <p className="small-heading-txt">LUCKY NUMBER</p>
                     <p className="text-sm">{zodiacInfo.lucky_number}</p>
                   </div>
                 </div>
-                <div className="flex items-center">
+                <div className="flex-items-center">
                   <Time />
                   <div className="ml-2">
-                    <p className="font-semibold text-sm">LUCKY TIME</p>
+                    <p className="small-heading-txt">LUCKY TIME</p>
                     <p className="text-sm">{zodiacInfo.lucky_time}</p>
                   </div>
                 </div>

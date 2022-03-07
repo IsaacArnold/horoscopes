@@ -7,3 +7,11 @@
 body {
     height: 100vh;
 }
+
+.small-heading-txt {
+    @apply font-semibold text-sm;
+}
+
+.flex-items-center {
+    @apply flex items-center
+}
